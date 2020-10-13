@@ -1,0 +1,7 @@
+from tomcat:latest
+run apt-get update && apt-get -y upgrade
+WORKDIR /usr/local/tomcat
+RUN wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+COPY sample.war /usr/local/tomcat/webapp
+expose 8080
+cmd [ "tomcat", "start"]
